@@ -10,19 +10,23 @@ Five-class single-beat classifier (N normal, S supraventricular, V ventricular, 
 
 | Metric | Value |
 |---|---|
-| Accuracy | 95.6% |
-| Macro F1 | 0.821 |
-| Macro AUC (one-vs-rest) | 0.980 |
+| Accuracy | 90.5% |
+| Macro F1 | 0.746 |
+| Macro AUC (one-vs-rest) | 0.972 |
 
 | Class | Recall | Precision | AUC | Test beats |
 |---|---|---|---|---|
-| N | 96.6% | 98.5% | 0.983 | 18,118 |
-| S | 58.5% | 76.8% | 0.935 | 556 |
-| V | 94.5% | 84.5% | 0.995 | 1,448 |
-| F | 82.7% | 52.3% | 0.990 | 162 |
-| Q | 99.4% | 87.9% | 0.999 | 1,608 |
+| N | 90.6% | 98.5% | 0.977 | 18,118 |
+| S | 72.3% | 22.7% | 0.906 | 556 |
+| V | 91.1% | 85.9% | 0.994 | 1,448 |
+| F | 72.2% | 52.9% | 0.985 | 162 |
+| Q | 97.1% | 92.0% | 0.999 | 1,608 |
 
-Overall accuracy is dominated by the normal class (83% of test beats). Supraventricular beats are the weak point: 35% of them are labelled normal. Full numbers in `results/metrics_summary.json`.
+![confusion matrix](results/confusion_matrix.png)
+
+Overall accuracy is dominated by the normal class (83% of test beats). The weak point is precision for S: 1,342 normal beats are labelled supraventricular. Full numbers in `results/metrics_summary.json`.
+
+Run-to-run variation is large for this model. An earlier run with the same code and seed settings stopped later and gave 95.6% accuracy and macro F1 0.821, with S recall 58.5% and S precision 76.8%. The numbers above are from the run that produced the saved model. The confusion matrix figure was regenerated from the confusion matrix counts of that run.
 
 ## Method
 
